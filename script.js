@@ -8,7 +8,7 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
         product: document.getElementById("product").value
     };
 
-    const response = await fetch("http://localhost:3000/lead", {
+    const response = await fetch("https://arihant-lead-distribution.onrender.com/lead", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
