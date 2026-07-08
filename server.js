@@ -59,6 +59,13 @@ app.post("/lead", async (req, res) => {
 
   const lead = req.body;
 
+await supabase.from("leads").insert([
+  {
+    name: lead.name,
+    phone: lead.phone
+  }
+]);
+
   let currentIndex = await getCurrentIndex();
 
   const salesman = salesmen[currentIndex];
@@ -72,6 +79,20 @@ app.post("/lead", async (req, res) => {
     salesmanPhone: salesman.phone,
     lead: lead
   });
+
+});
+app.get("/admin/leads", async (req, res) => {
+
+  const { data, error } = await supabase
+    .from("leads")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    return res.status(500).json(error);
+  }
+
+  res.json(data);
 
 });
 
