@@ -2,10 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
+const { createClient } = require("@supabase/supabase-js");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+);
 app.use(cors());
 app.use(express.json());
 
@@ -29,29 +34,38 @@ const salesmen = [
   }
 ];
 
-function getCurrentIndex() {
-  const data = JSON.parse(fs.readFileSync("counter.json", "utf8"));
-  return data.currentIndex;
+async function getCurrentIndex() {
+  const { data, error } = await supabase
+    .from("counter")
+    .select("current_index")
+    .eq("id", 1)
+    .single();
+
+  if (error) throw error;
+
+  return data.current_index;
 }
 
-function saveCurrentIndex(index) {
-  fs.writeFileSync(
-    "counter.json",
-    JSON.stringify({ currentIndex: index }, null, 2)
-  );
+async function saveCurrentIndex(index) {
+  const { error } = await supabase
+    .from("counter")
+    .update({ current_index: index })
+    .eq("id", 1);
+
+  if (error) throw error;
 }
 
-app.post("/lead", (req, res) => {
+app.post("/lead", async (req, res) => {
 
   const lead = req.body;
 
-  let currentIndex = getCurrentIndex();
+  let currentIndex = await getCurrentIndex();
 
   const salesman = salesmen[currentIndex];
 
   currentIndex = (currentIndex + 1) % salesmen.length;
 
-  saveCurrentIndex(currentIndex);
+  await saveCurrentIndex(currentIndex);
 
   res.json({
     salesmanName: salesman.name,
