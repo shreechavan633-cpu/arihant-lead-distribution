@@ -21,16 +21,16 @@ app.get("/", (req, res) => {
 });
 const salesmen = [
   {
-    name: "Salesman 1",
-    phone: "919111111111"
+    name: "Mittal-Arihant Kurta House",
+    phone: "919274732279"
   },
   {
-    name: "Salesman 2",
-    phone: "919222222222"
+    name: "Ankit-Arihant Kurta House",
+    phone: "919016932279"
   },
   {
-    name: "Salesman 3",
-    phone: "919333333333"
+    name: "Vicky-Arihant Kurta House",
+    phone: "916354932279"
   }
 ];
 
