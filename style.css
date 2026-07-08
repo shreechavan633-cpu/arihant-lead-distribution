@@ -65,3 +65,9 @@ transition:.3s;
 button:hover{
 background:#ff2020;
 }
+
+.features p{
+    margin: 14px 0;
+    font-size: 17px;
+    color: #f2f2f2;
+}
