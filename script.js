@@ -1,12 +1,7 @@
 document.getElementById("leadForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    const lead = {
-        name: document.getElementById("name").value,
-        phone: document.getElementById("phone").value,
-        city: document.getElementById("city").value,
-        product: document.getElementById("product").value
-    };
+    const lead = {};
 
     const response = await fetch("https://arihant-lead-distribution.onrender.com/lead", {
         method: "POST",
@@ -18,16 +13,9 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
 
     const data = await response.json();
 
-    const message =
-`New Customer Enquiry
+    const message = "Hi";
 
-Name: ${lead.name}
-Phone: ${lead.phone}
-City: ${lead.city}
-Product: ${lead.product}`;
-
-    const url =
-`https://wa.me/${data.salesmanPhone}?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${data.salesmanPhone}?text=${encodeURIComponent(message)}`;
 
     window.location.href = url;
 });
