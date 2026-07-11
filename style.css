@@ -23,7 +23,7 @@ box-shadow:0 0 30px rgba(255,0,0,.25);
 }
 
 .logo{
-width:220px;
+width:180px;
 margin-bottom:20px;
 }
 
@@ -32,9 +32,13 @@ color:#fff;
 margin-bottom:10px;
 }
 
+.tagline{
+    margin-bottom:2px;
+}
+
 p{
 color:#bbb;
-margin-bottom:25px;
+margin-bottom:8px;
 }
 
 input{
@@ -67,14 +71,18 @@ background:#ff2020;
 }
 
 .features p{
-    margin:10px 0;
+    margin:8px 0;
     font-size:22px;
     font-weight:500;
     color:#ffffff;
 }
 
+.features{
+    margin-bottom:0;
+}
+
 .form-group{
-    margin:4px 0;
+    margin:2px 0;
 }
 
 .form-group input{

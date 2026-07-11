@@ -16,13 +16,15 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
 
     const data = await response.json();
 
-    const message = `📢 *New Customer Inquiry*
+    const message =
+`${String.fromCodePoint(0x1F4E2)} *New Customer Inquiry*
 
-🏢 Business Name: ${lead.name}
+${String.fromCodePoint(0x1F3E2)} Business Name: ${lead.name}
 
-📞 Contact Number: ${lead.phone}`;
+${String.fromCodePoint(0x1F4DE)} Contact Number: ${lead.phone}`;
 
-    const url = `https://wa.me/${data.salesmanPhone}?text=${encodeURIComponent(message)}`;
+
+    const url = `https://api.whatsapp.com/send?phone=${data.salesmanPhone}&text=${encodeURIComponent(message)}`;
 
     window.location.href = url;
 });
