@@ -1,7 +1,10 @@
 document.getElementById("leadForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    const lead = {};
+    const lead = {
+    name: document.getElementById("businessName").value,
+    phone: document.getElementById("phone").value
+};
 
     const response = await fetch("https://arihant-lead-distribution.onrender.com/lead", {
         method: "POST",
