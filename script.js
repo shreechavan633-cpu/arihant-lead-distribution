@@ -16,7 +16,11 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
 
     const data = await response.json();
 
-    const message = "Hi";
+    const message = `📢 *New Customer Inquiry*
+
+🏢 Business Name: ${lead.name}
+
+📞 Contact Number: ${lead.phone}`;
 
     const url = `https://wa.me/${data.salesmanPhone}?text=${encodeURIComponent(message)}`;
 
