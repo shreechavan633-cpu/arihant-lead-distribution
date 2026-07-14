@@ -25,8 +25,7 @@ ${String.fromCodePoint(0x1F3E2)} Business Name: ${lead.name}
 
 ${String.fromCodePoint(0x1F4DE)} Contact Number: ${lead.phone}`;
 
-const url = `https://wa.me/${data.salesmanPhone}?text=${encodeURIComponent(message)}`;
+const url = `https://api.whatsapp.com/send?phone=${data.salesmanPhone}&text=${encodeURIComponent(message)}`;
 
-console.log(url);
-window.open(url, "_blank");
+window.location.href = url;
 });
