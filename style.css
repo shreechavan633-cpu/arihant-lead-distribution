@@ -1,145 +1,303 @@
+/* ============================= */
+/* ARIHANT KURTA HOUSE */
+/* PREMIUM CLIENT VERSION */
+/* ============================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Inter,Arial,sans-serif;
 }
 
 body{
-    background:#111827;
-    color:#fff;
+
+    background:#080808;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+    color:white;
+
 }
+
+/* CARD */
 
 .container{
-    width:90%;
-    max-width:390px;
-    margin:25px auto;
-    background:#1f2937;
-    padding:28px;
+
+    width:100%;
+
+    max-width:430px;
+
+    background:#121212;
+
     border-radius:24px;
+
+    padding:35px 28px;
+
     text-align:center;
-    box-shadow:0 0 35px rgba(255,0,0,.18);
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    box-shadow:
+0 0 20px rgba(255,0,0,.35),
+0 0 50px rgba(255,0,0,.15);
+
 }
+
+/* RGB GLOW */
+
+.container::before{
+
+content:"";
+
+position:absolute;
+
+top:-40%;
+
+left:-40%;
+
+width:180%;
+
+height:180%;
+
+background:
+
+radial-gradient(circle,
+rgba(255,0,0,.30),
+transparent 65%);
+
+z-index:0;
+
+pointer-events:none;
+
+}
+
+/* EVERYTHING ABOVE GLOW */
+
+.container>*{
+
+position:relative;
+
+z-index:1;
+
+}
+
+/* LOGO */
 
 .logo{
-    width:180px;
-    display:block;
-    margin:0 auto 20px;
-    border-radius:15px;
+
+width:170px;
+
+display:block;
+
+margin:0 auto 22px;
+
+border-radius:14px;
+
 }
 
+/* HEADING */
+
 h1{
-    color:#12c9b1;
-    font-size:42px;
-    margin-bottom:20px;
-    text-shadow:0 0 20px rgba(18,201,177,.5);
+
+font-size:34px;
+
+font-weight:800;
+
+margin-bottom:18px;
+
+color:white;
+
 }
+
+/* TAGLINE */
 
 .tagline{
-    margin-bottom:25px;
-    font-size:18px;
-    line-height:1.7;
+
+font-size:18px;
+
+font-weight:700;
+
+color:white;
+
+margin-bottom:28px;
+
+letter-spacing:.5px;
+
 }
+
+/* FEATURES */
 
 .features{
-    text-align:left;
-    margin-bottom:25px;
-    line-height:1.9;
-}
 
-.form-group{
-    margin-bottom:18px;
-}
+text-align:left;
 
-.form-group input{
-    width:100%;
-    padding:16px;
-    border-radius:10px;
-    border:2px solid #12c9b1;
-    background:#111827;
-    color:#fff;
-    font-size:16px;
-}
-
-.form-group input::placeholder{
-    color:#aaa;
-}
-
-.form-group input:focus{
-    outline:none;
-    box-shadow:0 0 12px rgba(18,201,177,.5);
-}
-
-button{
-    width:100%;
-    padding:16px;
-    border:none;
-    border-radius:12px;
-    background:#25D366;
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.25s;
-}
-
-button:hover{
-    background:#1ebe5d;
-    transform:translateY(-2px);
-}
-
-@media(max-width:600px){
-
-.container{
-    margin:20px;
-    padding:22px;
-}
-
-.logo{
-    width:180px;
-}
-
-h1{
-    font-size:32px;
-}
+margin-bottom:28px;
 
 }
+
+.features p{
+
+margin:14px 0;
+
+font-size:17px;
+
+color:#cfcfcf;
+
+line-height:1.6;
+
+}
+
+.features strong{
+
+color:#fff;
+
+font-size:18px;
+
+font-weight:800;
+
+}
+
+/* INPUTS */
 
 input{
-    width:100%;
-    padding:15px;
-    margin:10px 0;
-    border:2px solid #17d4c3;
-    border-radius:10px;
-    background:#111827;
-    color:#fff;
-    font-size:16px;
-    transition:0.3s;
+
+width:100%;
+
+padding:16px;
+
+margin-bottom:16px;
+
+background:#1b1b1b;
+
+border:2px solid #333;
+
+border-radius:12px;
+
+color:white;
+
+font-size:16px;
+
+transition:.25s;
+
+}
+
+input::placeholder{
+
+color:#8a8a8a;
+
 }
 
 input:focus{
-    outline:none;
-    border-color:#25D366;
-    box-shadow:0 0 10px rgba(37,211,102,.35);
+
+outline:none;
+
+border-color:#ff2b2b;
+
+box-shadow:0 0 18px rgba(255,0,0,.35);
+
 }
 
-@media (max-width:600px){
+/* BUTTON */
+
+button{
+
+width:100%;
+
+padding:17px;
+
+border:none;
+
+border-radius:12px;
+
+background:linear-gradient(135deg,#ff2d2d,#c60000);
+
+color:white;
+
+font-size:18px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:0 0 18px rgba(255,0,0,.35);
+
+}
+
+button:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 0 28px rgba(255,0,0,.60);
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+body{
+
+padding:18px;
+
+}
 
 .container{
-    width:92%;
-    padding:22px;
+
+padding:28px 22px;
+
 }
 
 .logo{
-    width:150px;
+
+width:145px;
+
 }
 
 h1{
-    font-size:38px;
+
+font-size:28px;
+
+}
+
+.tagline{
+
+font-size:16px;
+
+}
+
+.features p{
+
+font-size:16px;
+
+}
+
+.features strong{
+
+font-size:17px;
+
 }
 
 button{
-    font-size:17px;
+
+font-size:17px;
+
+padding:16px;
+
 }
 
 }
