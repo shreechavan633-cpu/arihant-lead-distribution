@@ -6,7 +6,7 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
     phone: document.getElementById("phone").value
 };
 
-    const response = await fetch("https://arihant-lead-distribution.onrender.com/lead", {
+    const response = await fetch("/lead", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -16,6 +16,8 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
 
     const data = await response.json();
 
+    console.log(data);
+    
     const message =
 `${String.fromCodePoint(0x1F4E2)} *New Customer Inquiry*
 

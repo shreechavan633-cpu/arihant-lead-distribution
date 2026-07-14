@@ -58,31 +58,54 @@ async function saveCurrentIndex(index) {
 }
 
 app.post("/lead", async (req, res) => {
+  try {
+    const lead = req.body;
 
-  const lead = req.body;
+    // Get current salesman index
+    let currentIndex = await getCurrentIndex();
 
-await supabase.from("leads").insert([
-  {
-    name: lead.name,
-    phone: lead.phone
-  }
-]);
+    // Select salesman
+    const salesman = salesmen[currentIndex];
 
-  let currentIndex = await getCurrentIndex();
+console.log("Selected salesman:", salesman);
 
-  const salesman = salesmen[currentIndex];
-
-  currentIndex = (currentIndex + 1) % salesmen.length;
-
-  await saveCurrentIndex(currentIndex);
-
-  res.json({
-    salesmanName: salesman.name,
-    salesmanPhone: salesman.phone,
-    lead: lead
-  });
-
+console.log("Lead being inserted:", {
+  name: lead.name,
+  phone: lead.phone,
+  assigned_to: salesman.name
 });
+
+    // Save lead to Supabase
+    const { error } = await supabase
+      .from("leads")
+      .insert([
+        {
+          name: lead.name,
+          phone: lead.phone,
+          assigned_to: salesman.name
+        }
+      ]);
+
+    if (error) {
+      return res.status(500).json(error);
+    }
+
+    // Update round robin
+    currentIndex = (currentIndex + 1) % salesmen.length;
+    await saveCurrentIndex(currentIndex);
+
+    // Return selected salesman
+    res.json({
+      salesmanName: salesman.name,
+      salesmanPhone: salesman.phone
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.get("/admin/leads", async (req, res) => {
 
   const { data, error } = await supabase
