@@ -94,6 +94,11 @@ console.log("Lead being inserted:", {
     currentIndex = (currentIndex + 1) % salesmen.length;
     await saveCurrentIndex(currentIndex);
 
+    console.log("Returning:", {
+    salesmanName: salesman.name,
+    salesmanPhone: salesman.phone
+});
+
     // Return selected salesman
     res.json({
       salesmanName: salesman.name,

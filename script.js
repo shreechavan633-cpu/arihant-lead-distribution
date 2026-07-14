@@ -26,6 +26,5 @@ ${String.fromCodePoint(0x1F3E2)} Business Name: ${lead.name}
 ${String.fromCodePoint(0x1F4DE)} Contact Number: ${lead.phone}`;
 
 const url = `https://api.whatsapp.com/send?phone=${data.salesmanPhone}&text=${encodeURIComponent(message)}`;
-
 window.location.href = url;
 });
